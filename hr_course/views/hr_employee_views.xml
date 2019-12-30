@@ -19,7 +19,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="hr_course_attendee_tree_employee_view">
+    <record id="hr_course_attendee_tree_employee_view" model="ir.ui.view">
         <field name="name">hr.course.attendee.tree.employee</field>
         <field name="model">hr.course.attendee</field>
         <field name="priority">100</field>
@@ -28,7 +28,7 @@
                   decoration-muted="state=='cancelled'"
                   decoration-success="state!='cancelled' and result=='passed'"
                   decoration-danger="state!='cancelled' and (result=='failed' or result=='absent')">
-                <field name="course_id"/>
+                <field name="course_schedule_id"/>
                 <field name="state"/>
                 <field name="course_start"/>
                 <field name="course_end"/>
@@ -41,7 +41,6 @@
         <field name="name">Courses</field>
         <field name="res_model">hr.course.attendee</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
         <field name="view_ids" eval="[(5,0,0),
                           (0,0,{'view_mode':'tree', 'view_id': ref('hr_course_attendee_tree_employee_view')}),
                           (0,0,{'view_mode':'form'})]"/>

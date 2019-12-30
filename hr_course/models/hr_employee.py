@@ -5,7 +5,7 @@ class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     count_courses = fields.Integer(
-        "Number of courses", compute="_compute_count_courses"
+        "Number of courses", compute="_compute_count_courses", default=0
     )
 
     courses_ids = fields.One2many(
@@ -17,7 +17,6 @@ class HrEmployee(models.Model):
         for r in self:
             r.count_courses = len(r.courses_ids)
 
-    @api.multi
     def action_view_course(self):
         action = self.env.ref("hr_course.action_view_course")
         result = action.read()[0]
